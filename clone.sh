@@ -1,2 +1,3 @@
-git clone https://github.com/aPisC/deckery.backend.git 
-git clone https://github.com/aPisC/deckery.frontend.git
+git clone 'https://github.com/aPisC/deckery.server.git' 
+git clone 'https://github.com/aPisC/deckery.client.git'
+git clone 'https://github.com/aPisC/deckery.docker.git'
