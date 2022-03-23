@@ -1,0 +1,8 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbit-mq-test
+
+# rabbitmqctl add_user username password
+# rabbitmqctl set_user_tags username administrator
+# rabbitmqctl set_permissions -p / username ".*" ".*" ".*"
