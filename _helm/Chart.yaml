@@ -1,0 +1,9 @@
+apiVersion: v2
+name: deckery
+version: 1.0.0
+dependencies:
+  - name: common
+    version: 1.0.0
+  - name: web-ui
+    condition: web_ui.enabled
+    version: 1.0.0

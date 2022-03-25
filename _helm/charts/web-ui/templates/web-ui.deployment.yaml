@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-ui
+spec:
+  selector:
+    matchLabels:
+      app: web-ui
+  template:
+    metadata:
+      labels:
+        app: web-ui
+    spec:      
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.web_ui.repository }}:{{.Values.web_ui.tag}}
+          imagePullPolicy: {{ .Values.web_ui.pullPolicy }}
+          ports:
+          - containerPort: 3000
+        

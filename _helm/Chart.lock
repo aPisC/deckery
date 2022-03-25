@@ -1,0 +1,9 @@
+dependencies:
+- name: common
+  repository: ""
+  version: 1.0.0
+- name: web-ui
+  repository: ""
+  version: 1.0.0
+digest: sha256:96f1deb870dde3bf7af2c7f4178520c8ec655496a68fbdd109b580bc8cc2d34d
+generated: "2022-03-24T13:30:59.83075+01:00"
