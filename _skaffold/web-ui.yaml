@@ -5,10 +5,14 @@ metadata:
 build:
   artifacts:
     - image: localhost:30500/deckery/web-ui
-      context: ../services/web-ui
+      context: ../services
+      docker:
+        dockerfile: web-ui/Dockerfile
       sync:
         infer:
-          - 'src/**'
+          - "web-ui/src/**"
+          - "web-ui/public/**"
+          - "common/**"
 deploy:
   helm:
     releases: 

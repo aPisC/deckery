@@ -5,10 +5,14 @@ metadata:
 build:
   artifacts:
     - image: localhost:30500/deckery/game-ui
-      context: ../services/game-ui
+      context: ../services
+      docker:
+        dockerfile: game-ui/Dockerfile
       sync:
         infer:
-          - 'src/**'
+          - "game-ui/src/**"
+          - "game-ui/public/**"
+          - "common/**"
 deploy:
   helm:
     releases: 

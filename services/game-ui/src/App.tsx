@@ -1,8 +1,11 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { TestInterface } from "common";
 
 function App() {
+  const test: TestInterface = { name: "" };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +19,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Reacttttt
+          Learn React
         </a>
       </header>
     </div>

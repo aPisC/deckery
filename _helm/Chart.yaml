@@ -2,7 +2,7 @@ apiVersion: v2
 name: deckery
 version: 1.0.0
 dependencies:
-  - name: common
+  - name: deckery-infra
     version: 1.0.0
   - name: deckery-web-ui
     condition: web_ui.enabled

@@ -8,4 +8,4 @@ game_ui:
   repository: localhost:30500/deckery/game-ui
   tag: latest
   pullPolicy: IfNotPresent
-  enabled: false
+  enabled: true
