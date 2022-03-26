@@ -1,3 +1,3 @@
 apiVersion: v2
-name: deckery-web-ui
+name: deckery-game-ui
 version: 1.0.0

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deckery-web-ui
+  name: deckery-game-ui
 spec:
   selector:
     matchLabels:
-      app: deckery-web-ui
+      app: deckery-game-ui
   template:
     metadata:
       labels:
-        app: deckery-web-ui
+        app: deckery-game-ui
     spec:      
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ .Values.web_ui.repository }}:{{.Values.web_ui.tag}}
-          imagePullPolicy: {{ .Values.web_ui.pullPolicy }}
+          image: {{ .Values.game_ui.repository }}:{{.Values.game_ui.tag}}
+          imagePullPolicy: {{ .Values.game_ui.pullPolicy }}
           ports:
           - containerPort: 3000
         

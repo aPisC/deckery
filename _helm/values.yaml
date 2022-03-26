@@ -3,3 +3,9 @@ web_ui:
   tag: latest
   pullPolicy: IfNotPresent
   enabled: true
+
+game_ui:
+  repository: localhost:30500/deckery/game-ui
+  tag: latest
+  pullPolicy: IfNotPresent
+  enabled: false

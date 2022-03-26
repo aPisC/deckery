@@ -1,0 +1,25 @@
+apiVersion: skaffold/v2beta11
+kind: Config
+metadata:
+  name: deckery-web-ui
+build:
+  artifacts:
+    - image: localhost:30500/deckery/web-ui
+      context: ../services/web-ui
+      sync:
+        infer:
+          - 'src/**'
+deploy:
+  helm:
+    releases: 
+    - name: deckery-web-ui
+      chartPath: ../_helm/charts/web-ui
+      artifactOverrides:
+        web_ui: localhost:30500/deckery/web-ui
+      imageStrategy:
+        helm: {}
+portForward:
+  - resourceType: Deployment
+    resourceName: deckery-web-ui
+    port: 3000
+    localPort: 3000

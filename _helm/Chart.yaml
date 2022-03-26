@@ -4,6 +4,9 @@ version: 1.0.0
 dependencies:
   - name: common
     version: 1.0.0
-  - name: web-ui
+  - name: deckery-web-ui
     condition: web_ui.enabled
+    version: 1.0.0  
+  - name: deckery-game-ui
+    condition: game_ui.enabled
     version: 1.0.0
