@@ -2,3 +2,8 @@ web_ui:
   repository: localhost:30500/deckery/web-ui
   tag: latest
   pullPolicy: IfNotPresent
+
+  service:
+    internalPort: 3000
+    externalPort: 80
+

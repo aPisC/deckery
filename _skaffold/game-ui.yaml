@@ -4,22 +4,17 @@ metadata:
   name: deckery-game-ui
 build:
   artifacts:
-    - image: localhost:30500/deckery/web-ui
-      context: services/web-ui
+    - image: localhost:30500/deckery/game-ui
+      context: ../services/game-ui
       sync:
         infer:
           - 'src/**'
 deploy:
   helm:
     releases: 
-    - name: web-ui
-      chartPath: _helm/charts/web-ui
+    - name: deckery-game-ui
+      chartPath: ../_helm/charts/game-ui
       artifactOverrides:
-        web_ui: localhost:30500/deckery/web-ui
+        game_ui: localhost:30500/deckery/game-ui
       imageStrategy:
         helm: {}
-portForward:
-  - resourceType: Deployment
-    resourceName: web-ui
-    port: 3000
-    localPort: 3000

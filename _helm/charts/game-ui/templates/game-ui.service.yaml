@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deckery-game-ui
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+spec:
+  type: {{ .Values.game_ui.service.type }}
+  selector:
+    app: deckery-game-ui
+  ports:
+  - port: {{ .Values.game_ui.service.externalPort }}
+    targetPort: {{ .Values.game_ui.service.internalPort }}
+    protocol: TCP
+    name: {{ .Chart.Name }}

@@ -18,8 +18,3 @@ deploy:
         web_ui: localhost:30500/deckery/web-ui
       imageStrategy:
         helm: {}
-portForward:
-  - resourceType: Deployment
-    resourceName: deckery-web-ui
-    port: 3000
-    localPort: 3000

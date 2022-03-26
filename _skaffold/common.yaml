@@ -1,11 +1,11 @@
 apiVersion: skaffold/v2beta11
 kind: Config
 metadata:
-  name: common
+  name: deckery-common
 deploy:
   helm:
     releases: 
-    - name: common
-      chartPath: _helm/charts/common
+    - name: deckery-common
+      chartPath: ../_helm/charts/common
       imageStrategy:
         helm: {}
