@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "deckery",
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
+  "devDependencies": {
+    "ts-node": "^10.7.0"
+  }
+}
