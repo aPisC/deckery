@@ -1,0 +1,25 @@
+apiVersion: skaffold/v2beta11
+kind: Config
+metadata:
+  name: deckery-auth
+build:
+  artifacts:
+    - image: localhost:30500/deckery/auth
+      context: ..
+      docker:
+        dockerfile: services/auth/Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+          - src: 'package.json'
+            dest: .
+deploy:
+  helm:
+    releases: 
+    - name: deckery-auth
+      chartPath: ../_helm/charts/auth
+      artifactOverrides:
+        auth: localhost:30500/deckery/auth
+      imageStrategy:
+        helm: {}

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deckery-auth
+spec:
+  selector:
+    matchLabels:
+      app: deckery-auth
+  template:
+    metadata:
+      labels:
+        app: deckery-auth
+    spec:      
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.auth.repository }}:{{.Values.auth.tag}}
+          imagePullPolicy: {{ .Values.auth.pullPolicy }}
+          ports:
+          - containerPort: 3000
+        

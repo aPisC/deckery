@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deckery-auth
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+spec:
+  type: {{ .Values.auth.service.type }}
+  selector:
+    app: deckery-auth
+  ports:
+  - port: {{ .Values.auth.service.externalPort }}
+    targetPort: {{ .Values.auth.service.internalPort }}
+    protocol: TCP
+    name: {{ .Chart.Name }}

@@ -1,0 +1,8 @@
+auth:
+  repository: localhost:30500/deckery/auth
+  tag: latest
+  pullPolicy: IfNotPresent
+  
+  service:
+    internalPort: 3000
+    externalPort: 80

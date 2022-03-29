@@ -1,3 +1,3 @@
 export const config = {
-  jwtSecret: 'jwt-secret',
+  jwtSecret: 'jwt-secrettt',
 };
