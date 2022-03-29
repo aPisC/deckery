@@ -9,11 +9,9 @@ build:
       docker:
         dockerfile: services/auth/Dockerfile
       sync:
-        manual:
-          - src: '*.js'
-            dest: .
-          - src: 'package.json'
-            dest: .
+        infer:
+        - "services/auth/**"
+        
 deploy:
   helm:
     releases: 

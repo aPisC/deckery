@@ -4,6 +4,7 @@ metadata:
   name: deckery
 requires:
   - path: _skaffold/infra.yaml
+  - path: _skaffold/auth.yaml
   - path: _skaffold/web-ui.yaml
   - path: _skaffold/game-ui.yaml
 
@@ -16,3 +17,7 @@ portForward:
     resourceName: deckery-game-ui
     port: 80
     localPort: 3001
+  - resourceType: Service
+    resourceName: deckery-auth
+    port: 80
+    localPort: 3002

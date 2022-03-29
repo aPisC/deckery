@@ -1,19 +1,19 @@
 FROM node:16 as build
 
-# Install dependency packages
 WORKDIR /app
-COPY game-ui/package.json game-ui/package.json
-RUN cd game-ui && npm install
+
+# Install dependency packages
+COPY package.json package.json
+COPY services/common/package.json services/common/package.json
+COPY services/game-ui/package.json services/game-ui/package.json
+
+RUN yarn workspace @deckery/game-ui install
 
 # Copy source files
-COPY common common 
-
-COPY game-ui/tsconfig.json game-ui/tsconfig.json
-COPY game-ui/public game-ui/public
-COPY game-ui/src game-ui/src
+COPY services/common services/common 
+COPY services/game-ui services/game-ui
 
 # Start app
-WORKDIR /app/game-ui
-CMD [ "npm", "run", "start" ]
+CMD yarn workspace @deckery/game-ui start
 
 

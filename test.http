@@ -1,1 +1,2 @@
-GET http://localhost:3000/auth
+POST http://localhost:3002/auth/register
+

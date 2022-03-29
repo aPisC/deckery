@@ -10,9 +10,8 @@ build:
         dockerfile: services/web-ui/Dockerfile
       sync:
         infer:
-          - "web-ui/src/**"
-          - "web-ui/public/**"
-          - "common/**"
+          - "services/web-ui/**"
+          - "services/common/**"
 deploy:
   helm:
     releases: 
