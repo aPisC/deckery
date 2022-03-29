@@ -5,9 +5,9 @@ metadata:
 build:
   artifacts:
     - image: localhost:30500/deckery/web-ui
-      context: ../services
+      context: ..
       docker:
-        dockerfile: web-ui/Dockerfile
+        dockerfile: services/web-ui/Dockerfile
       sync:
         infer:
           - "web-ui/src/**"

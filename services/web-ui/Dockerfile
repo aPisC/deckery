@@ -1,19 +1,20 @@
 FROM node:16 as build
 
-# Install dependency packages
 WORKDIR /app
-COPY web-ui/package.json web-ui/package.json
-RUN cd web-ui && npm install
+# Install dependency packages
+COPY package.json package.json
+COPY services/common/package.json services/common/
+COPY services/web-ui/package.json services/web-ui/
+
+RUN yarn install
+
+# Build common package
+COPY services/common services/common 
+RUN yarn workspace @deckery/common build
 
 # Copy source files
-COPY common common 
-
-COPY web-ui/tsconfig.json web-ui/tsconfig.json
-COPY web-ui/public web-ui/public
-COPY web-ui/src web-ui/src
+COPY services/web-ui services/web-ui
 
 # Start app
-WORKDIR /app/web-ui
-CMD [ "npm", "run", "start" ]
-
+CMD yarn workspace @deckery/web-ui start
 
