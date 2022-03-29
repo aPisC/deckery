@@ -1,17 +1,20 @@
 import { Controller, Route, ValidateBody } from '@deckery/common/api';
-import UserModel from 'src/models/user.model';
 import { AuthTypes } from '@deckery/common/types';
 import Koa from 'koa';
 import { Op } from 'sequelize';
 import * as Jwt from 'jsonwebtoken';
 import Joi from 'joi';
 import { ServerContext } from '../server';
-import { RegisterOptions } from 'ts-node';
-import GroupModel from 'src/models/group.model';
-import { groupCollapsed } from 'console';
-import { config } from 'src/config';
+import UserModel from '../models/user.model';
+import GroupModel from '../models/group.model';
+import { config } from '../config';
 
-export default class ApiController extends Controller {
+export default class AuthController extends Controller {
+  @Route.Get('/')
+  async index() {
+    return 'ok';
+  }
+
   @Route.Post()
   @ValidateBody<AuthTypes.Register>(() => Joi.object() as any as Joi.ObjectSchema<AuthTypes.Register>)
   async register(ctx: ServerContext<AuthTypes.Register>, next: Koa.Next) {

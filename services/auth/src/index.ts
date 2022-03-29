@@ -16,7 +16,7 @@ async function bootstrap() {
     models: [__dirname + '/models'],
   });
 
-  const koaServer = await koaBootstrap({ jwtSecret: 'jwt-secret' });
+  const koaServer = await koaBootstrap();
 
   const httpServer = createServer(koaServer.callback());
 

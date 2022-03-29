@@ -18,7 +18,7 @@ export function LoadApiDirectory(options: ApiDirectoryOptions): Router.IMiddlewa
     ...options,
   };
   const router = new Router({
-    prefix: ``,
+    prefix: options.prefix || '',
   });
 
   fs.readdirSync(options.path)

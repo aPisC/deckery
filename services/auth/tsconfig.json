@@ -12,6 +12,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "src/*": ["./*"],
       "@deckery/common": ["../common/src", "../common/dist"],
       "@deckery/common/*": ["../common/src/*", "../common/dist/*"]
     },
