@@ -1,4 +1,4 @@
-import * as Koa from 'koa';
+import Koa from 'koa';
 import { ApiError } from '../api/api-error';
 
 export async function CatchError(ctx: Koa.Context, next: Koa.Next) {

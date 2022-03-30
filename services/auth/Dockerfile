@@ -1,11 +1,11 @@
 ##########################
 # Create Development image
 ##########################
-FROM node:16 as builder
+FROM node:16 as development
 
 WORKDIR /app
 
-# Copy dependency packages
+# Install dependency packages
 COPY package.json .
 COPY services/common/package.json services/common/
 COPY services/auth/package.json services/auth/
@@ -15,13 +15,15 @@ RUN yarn install
 COPY services/common services/common
 COPY services/auth services/auth
 
-# Build project
-RUN yarn workspace @deckery/auth build
-
 # Stat app in development mode
 CMD yarn workspace @deckery/auth dev
 
-
+######################
+# Create Builder image
+######################
+FROM development as builder
+# Build project
+RUN yarn workspace @deckery/auth build
 
 #########################
 # Create production image

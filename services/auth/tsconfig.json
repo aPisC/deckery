@@ -16,7 +16,8 @@
       "@deckery/common": ["../common/src", "../common/dist"],
       "@deckery/common/*": ["../common/src/*", "../common/dist/*"]
     },
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "preserveWatchOutput": true
   },
   "include": ["./src/**/*"],
   "references": [{ "path": "../common" }]

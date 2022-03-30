@@ -1,4 +1,4 @@
-import * as Joi from 'joi';
+import Joi from 'joi';
 import { ControllerMiddleware, EndpointMiddleware, Middleware } from './middleware';
 
 // Validating object schema

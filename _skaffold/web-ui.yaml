@@ -9,9 +9,11 @@ build:
       docker:
         dockerfile: services/web-ui/Dockerfile
       sync:
-        infer:
-          - "services/web-ui/**"
-          - "services/common/**"
+        manual:
+        - src: services/web-ui/src/**/*
+          dest: .
+        - src: services/common/src/**/*
+          dest: .
 deploy:
   helm:
     releases: 
@@ -21,3 +23,11 @@ deploy:
         web_ui: localhost:30500/deckery/web-ui
       imageStrategy:
         helm: {}
+profiles: 
+- name: dev
+  activation:
+  - command: dev
+  patches:
+    - op: add
+      path: /build/artifacts/0/docker/target
+      value: development

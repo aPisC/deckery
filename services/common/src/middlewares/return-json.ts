@@ -1,4 +1,4 @@
-import * as Koa from 'koa';
+import Koa from 'koa';
 
 export async function ReturnJson(ctx: Koa.Context, next: Koa.Next) {
   const response = await next();

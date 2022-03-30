@@ -1,6 +1,6 @@
-import * as fs from 'fs';
-import * as Router from 'koa-router';
-import * as path from 'path';
+import fs from 'fs';
+import Router from 'koa-router';
+import path from 'path';
 import { Controller } from '../api';
 
 interface ApiDirectoryOptions {

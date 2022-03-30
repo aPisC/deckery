@@ -12,7 +12,7 @@ import { config } from '../config';
 export default class AuthController extends Controller {
   @Route.Get('/')
   async index() {
-    return 'ok';
+    return 'okkkk';
   }
 
   @Route.Post()

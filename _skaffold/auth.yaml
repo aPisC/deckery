@@ -10,9 +10,11 @@ build:
       docker:
         dockerfile: services/auth/Dockerfile
       sync:
-        infer:
-        - "services/auth/src/**"
-        - "services/common/src/**"
+        manual:
+        - src: services/auth/src/**/*
+          dest: .
+        - src: services/common/src/**/*
+          dest: .
 deploy:
   helm:
     releases: 
@@ -29,4 +31,4 @@ profiles:
   patches:
     - op: add
       path: /build/artifacts/0/docker/target
-      value: builder
+      value: development

@@ -1,4 +1,4 @@
-import * as Koa from 'koa';
+import Koa from 'koa';
 import { Controller, Symbols } from './controller';
 
 export type EndpointMiddleware<T extends Koa.Context = Koa.Context> = (

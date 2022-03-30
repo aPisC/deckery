@@ -3,16 +3,16 @@ kind: Config
 metadata:
   name: deckery
 requires:
-  #- path: _skaffold/infra.yaml
+  - path: _skaffold/infra.yaml
   - path: _skaffold/auth.yaml
-  #- path: _skaffold/web-ui.yaml
+  - path: _skaffold/web-ui.yaml
   #- path: _skaffold/game-ui.yaml
 
 portForward:
   - resourceType: Service
     resourceName: deckery-web-ui
     port: 80
-    localPort: 33000
+    localPort: 3000
   - resourceType: Service
     resourceName: deckery-game-ui
     port: 80

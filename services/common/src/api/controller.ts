@@ -1,6 +1,6 @@
-import * as Router from 'koa-router';
+import Router from 'koa-router';
 import 'reflect-metadata';
-import * as Koa from 'koa';
+import Koa from 'koa';
 import { RouteDefinition } from './route';
 import { kebabize } from '../utils/kebabize';
 

@@ -3,6 +3,7 @@
     "composite": true,
     "declaration": true,
     "declarationMap": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "outDir": "./dist",
     "target": "ES2015",
