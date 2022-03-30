@@ -9,9 +9,11 @@ build:
       docker:
         dockerfile: services/game-ui/Dockerfile
       sync:
-        infer:
-          - "services/game-ui/**"
-          - "services/common/**"
+        manual:
+        - src: services/game-ui/src/**/*
+          dest: .
+        - src: services/common/src/**/*
+          dest: .
 deploy:
   helm:
     releases: 
@@ -21,3 +23,11 @@ deploy:
         game_ui: localhost:30500/deckery/game-ui
       imageStrategy:
         helm: {}
+profiles: 
+- name: dev
+  activation:
+  - command: dev
+  patches:
+    - op: add
+      path: /build/artifacts/0/docker/target
+      value: development
