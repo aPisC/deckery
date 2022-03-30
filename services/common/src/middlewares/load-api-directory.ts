@@ -2,6 +2,7 @@ import fs from 'fs';
 import Router from 'koa-router';
 import path from 'path';
 import { Controller } from '../api';
+import compose from 'koa-compose';
 
 interface ApiDirectoryOptions {
   path: string;
@@ -12,7 +13,7 @@ const defaultOptions: Partial<ApiDirectoryOptions> = {
   prefix: '',
 };
 
-export function LoadApiDirectory(options: ApiDirectoryOptions): Router.IMiddleware[] {
+export function LoadApiDirectory(options: ApiDirectoryOptions): Router.IMiddleware {
   options = {
     ...defaultOptions,
     ...options,
@@ -37,5 +38,5 @@ export function LoadApiDirectory(options: ApiDirectoryOptions): Router.IMiddlewa
       } catch {}
     });
 
-  return [router.routes(), router.allowedMethods()];
+  return compose([router.routes(), router.allowedMethods()]);
 }

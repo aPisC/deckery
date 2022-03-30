@@ -16,6 +16,7 @@ export default class AuthController extends Controller {
   }
 
   @Route.Post()
+  //@ValidateBody("email", Joi.string().email().required())
   @ValidateBody<AuthTypes.Register>(() =>
     Joi.object({
       email: Joi.string().email().required(),

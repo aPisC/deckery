@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import Koa from 'koa';
 import { RouteDefinition } from './route';
 import { kebabize } from '../utils/kebabize';
+import { ReturnJson } from '../middlewares';
 
 export const Symbols = {
   routerOptions: Symbol(),
@@ -31,6 +32,10 @@ export class Controller {
     // Apply controller middlewares
     const middlewares: Koa.Middleware[] = Reflect.getMetadata(Symbols.middlewares, this.constructor) || [];
     middlewares.forEach((m) => this.__router.use(m));
+
+    // Apply Return value middleware
+
+    this.__router.use(ReturnJson);
 
     // Apply routes
     const routes: RouteDefinition[] = Reflect.getMetadata(Symbols.routes, this.constructor) || [];

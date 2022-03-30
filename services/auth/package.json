@@ -20,10 +20,10 @@
     "pollingInterval": 100,
     "legacyWatch": true,
     "watch": [
-      "dist"
+      "src"
     ],
-    "ext": "js",
-    "exec": "node --inspect  ./dist/index.js"
+    "ext": "ts",
+    "exec": "node -r ts-node/register --inspect  ./src/index.ts"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.5.8",

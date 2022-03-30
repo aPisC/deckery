@@ -13,7 +13,7 @@
     "./types": "./dist/types/index.js"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc --noEmit"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +21,7 @@
     "@types/joi": "^17.2.3",
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
+    "koa-compose": "^4.1.0",
     "koa-router": "^10.1.1",
     "reflect-metadata": "^0.1.13"
   }

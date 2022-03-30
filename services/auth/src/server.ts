@@ -42,9 +42,7 @@ export async function bootstrap(): Promise<Koa<ServerState, ServerContext>> {
     KoaBodyparser({}),
     ReturnJson,
     HealthCheck(),
-    ...LoadApiDirectory({
-      path: __dirname + '/api',
-    }),
+    LoadApiDirectory({ path: __dirname + '/api' }),
   ];
 
   middlewares.filter((m) => !!m).forEach((m) => server.use(m as Koa.Middleware));

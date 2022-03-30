@@ -1,8 +1,14 @@
+GET http://localhost:33002/health HTTP/1.1
+content-type: application/json
+
+
+###
+
 post http://localhost:33002/auth/register
 content-type: application/json
 
 {
-    "email": "asd@asd.com",
-    "username": "username",
+    "email": "asd1@asd.com",
+    "username": "username1",
     "password": "password"
 }
