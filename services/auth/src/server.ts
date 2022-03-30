@@ -5,7 +5,7 @@ import KoaCompress from 'koa-compress';
 import KoaHelmet from 'koa-helmet';
 import KoaJwt from 'koa-jwt';
 import KoaLogger from 'koa-logger';
-import { LoadApiDirectory, CatchError, ReturnJson } from '@deckery/common/middlewares';
+import { LoadApiDirectory, CatchError, ReturnJson, HealthCheck } from '@deckery/common/middlewares';
 import { config } from './config';
 
 export interface ServerContext<TRequestBody = any, TResponseBody = any> extends Context {
@@ -41,6 +41,7 @@ export async function bootstrap(): Promise<Koa<ServerState, ServerContext>> {
     KoaJwt({ secret: config.jwtSecret, passthrough: true }),
     KoaBodyparser({}),
     ReturnJson,
+    HealthCheck(),
     ...LoadApiDirectory({
       path: __dirname + '/api',
     }),
