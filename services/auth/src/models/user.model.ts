@@ -7,13 +7,13 @@ import UserGroupModel from './group.model';
 @Table
 export default class UserModel extends Model<UserAttributes, UserCreateAttributes> {
   @Column
-  email: string = '';
+  declare email: string;
 
   @Column
-  username: string = '';
+  declare username: string;
 
   @Column
-  name: string = '';
+  declare name: string;
 
   @Column({
     set: function (value: string) {
@@ -22,15 +22,15 @@ export default class UserModel extends Model<UserAttributes, UserCreateAttribute
       this.setDataValue('password', `${salt}:${hash}`);
     },
   })
-  password: string = '';
+  declare password: string;
 
   @Column({
     defaultValue: false,
   })
-  isAdmin: boolean = false;
+  declare isAdmin: boolean;
 
   @ForeignKey(() => UserGroupModel)
-  groupId: number = 0;
+  declare groupId: number;
 
   public validatePassword(value: string): boolean {
     const [salt, orig_hash] = this.password.split(':');

@@ -6,11 +6,11 @@ import AuthorityModel from './authority.model';
 @Table
 export default class GroupModel extends Model<GroupAttributes, GroupCreateAttributes> implements GroupAttributes {
   @Column
-  name: string = '';
+  declare name: string;
 
   @Column({ defaultValue: false })
-  isDefault: boolean = false;
+  declare isDefault: boolean;
 
   @HasMany(() => AuthorityModel)
-  authorities: any[] = [];
+  declare authorities: any[];
 }

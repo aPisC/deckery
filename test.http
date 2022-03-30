@@ -1,6 +1,8 @@
-GET http://localhost:33002/auth
+post http://localhost:33002/auth/register
 content-type: application/json
 
 {
-    "email": "asd"
+    "email": "asd@asd.com",
+    "username": "username",
+    "password": "password"
 }

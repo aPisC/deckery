@@ -23,14 +23,18 @@ export function LoadApiDirectory(options: ApiDirectoryOptions): Router.IMiddlewa
 
   fs.readdirSync(options.path)
     .filter((file) => file.indexOf('.') !== 0)
+    .filter((file) => file.endsWith('.js') || (file.endsWith('.ts') && !file.endsWith('.d.ts')))
     .forEach((file) => {
-      const api = require(path.join(options.path, file));
-      const controller: any = new api.default();
+      try {
+        console.log('Loading api controller from: ', file);
+        const api = require(path.join(options.path, file));
+        const controller: any = new api.default();
 
-      if (controller instanceof Controller) {
-        const apiRouter: Router = controller.__router;
-        router.use(apiRouter.routes());
-      }
+        if (controller instanceof Controller) {
+          const apiRouter: Router = controller.__router;
+          router.use(apiRouter.routes());
+        }
+      } catch {}
     });
 
   return [router.routes(), router.allowedMethods()];

@@ -24,6 +24,6 @@ export function ValidateBody(schema: Joi.AnySchema | (() => Joi.AnySchema)): any
     if (error) ctx.throw(401, `Validation error: ${error.message}`);
 
     ctx.request.body = value;
-    next();
+    return next();
   });
 }

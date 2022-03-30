@@ -11,11 +11,11 @@ export default class AuthorityModel
   implements AuthorityAttributes
 {
   @Column
-  authority: string = '';
+  declare authority: string;
 
   @ForeignKey(() => GroupModel)
-  groupId: any;
+  declare groupId: number;
 
   @BelongsTo(() => GroupModel)
-  group?: GroupAttributes;
+  declare group: GroupModel;
 }
