@@ -1,5 +1,4 @@
 import * as Joi from 'joi';
-import * as Koa from 'koa';
 import { ControllerMiddleware, EndpointMiddleware, Middleware } from './middleware';
 
 // Validating object schema
@@ -22,7 +21,7 @@ export function ValidateBody(schema: Joi.AnySchema | (() => Joi.AnySchema)): any
 
     const { error, value } = resolvedSchema.validate(body);
 
-    if (error) ctx.throw(400, `Validation error: ${error.message}`);
+    if (error) ctx.throw(401, `Validation error: ${error.message}`);
 
     ctx.request.body = value;
     next();

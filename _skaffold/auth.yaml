@@ -2,6 +2,7 @@ apiVersion: skaffold/v2beta11
 kind: Config
 metadata:
   name: deckery-auth
+
 build:
   artifacts:
     - image: localhost:30500/deckery/auth
@@ -10,8 +11,8 @@ build:
         dockerfile: services/auth/Dockerfile
       sync:
         infer:
-        - "services/auth/**"
-        
+        - "services/auth/src/**"
+        - "services/common/src/**"
 deploy:
   helm:
     releases: 
@@ -21,3 +22,11 @@ deploy:
         auth: localhost:30500/deckery/auth
       imageStrategy:
         helm: {}
+profiles: 
+- name: dev
+  activation:
+  - command: dev
+  patches:
+    - op: add
+      path: /build/artifacts/0/docker/target
+      value: builder

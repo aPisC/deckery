@@ -9,22 +9,21 @@
     "check": "npm run format && npm run lint",
     "format": "prettier --write \"src/**/*.+(ts|js|yml|yaml|json)\"",
     "lint": "eslint .",
-    "start": "node --experimental-specifier-resolution=node dist/index.js",
+    "start": "node dist/index.js",
     "test": "NODE_ENV=test jest'",
-    "dev": "nodemon",
+    "dev": "concurrently \"npm:dev:ts\" \"npm:dev:js\"",
+    "dev:ts": "tsc -b -w --noEmit",
+    "dev:js": "nodemon",
     "build": "tsc --build"
   },
   "nodemonConfig": {
     "pollingInterval": 100,
     "legacyWatch": true,
     "watch": [
-      "src"
+      "dist"
     ],
-    "ext": "ts,json",
-    "ignore": [
-      "src/**/*.spec.ts"
-    ],
-    "exec": "ts-node ./src/index.ts"
+    "ext": "js",
+    "exec": "node --inspect  ./dist/index.js"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.5.8",

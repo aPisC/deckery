@@ -16,7 +16,14 @@ export default class AuthController extends Controller {
   }
 
   @Route.Post()
-  @ValidateBody<AuthTypes.Register>(() => Joi.object() as any as Joi.ObjectSchema<AuthTypes.Register>)
+  @ValidateBody<AuthTypes.Register>(() =>
+    Joi.object({
+      email: Joi.string().email().required(),
+      username: Joi.string().required(),
+      password: Joi.string().required(),
+      name: Joi.string(),
+    }).required()
+  )
   async register(ctx: ServerContext<AuthTypes.Register>, next: Koa.Next) {
     const userData = <AuthTypes.Register>ctx.request.body;
 
