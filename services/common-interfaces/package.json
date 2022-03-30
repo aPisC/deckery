@@ -1,0 +1,15 @@
+{
+  "name": "@deckery/common-interfaces",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC"
+}

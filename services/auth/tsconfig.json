@@ -15,12 +15,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@deckery/common": ["../common/src", "../common/dist"],
-      "@deckery/common/*": ["../common/src/*", "../common/dist/*"]
+      "@deckery/common-api/*": ["../common-api/src/*", "../common-api/dist/*"]
     },
     "preserveSymlinks": true,
     "preserveWatchOutput": true
   },
   "include": ["./src/**/*"],
-  "references": [{ "path": "../common" }]
+  "references": [{ "path": "../common-api" }, { "path": "../common-interfaces" }, { "path": "../common-utils" }]
 }

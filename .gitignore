@@ -2,3 +2,6 @@
 /deckery.client/
 /deckery.docker/
 node_modules
+dist
+build
+tsconfig.tsbuildinfo

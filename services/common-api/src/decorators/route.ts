@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Symbols } from './controller';
+import { Symbols } from '../controller';
 
 type HttpMethod = 'get' | 'post' | 'put' | 'del' | 'all';
 

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import Router from 'koa-router';
 import path from 'path';
-import { Controller } from '../api';
+import { Controller } from '..';
 import compose from 'koa-compose';
 
 interface ApiDirectoryOptions {

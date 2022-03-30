@@ -1,5 +1,6 @@
-import { Controller, Route, ValidateBody } from '@deckery/common/api';
-import { AuthTypes } from '@deckery/common/types';
+import { Controller } from '@deckery/common-api';
+import { Route, ValidateBody } from '@deckery/common-api/decorators';
+import { AuthTypes } from '@deckery/common-interfaces';
 import Koa from 'koa';
 import { Op } from 'sequelize';
 import * as Jwt from 'jsonwebtoken';

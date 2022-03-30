@@ -2,9 +2,8 @@ import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
 import UserModel from './models/user.model';
 import GroupModel from './models/group.model';
 import AuthorityModel from './models/authority.model';
-import { randomString } from '@deckery/common/utils';
-import Authorities from '@deckery/common/authorities';
-import path from 'path';
+import { randomString } from '@deckery/common-utils';
+import { Authorities } from '@deckery/common-interfaces';
 
 export async function bootstrap(options: SequelizeOptions) {
   const sequelize = new Sequelize(options);

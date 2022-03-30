@@ -13,7 +13,11 @@ build:
         manual:
         - src: services/auth/src/**/*
           dest: .
-        - src: services/common/src/**/*
+        - src: services/common-api/src/**/*
+          dest: .
+        - src: services/common-utils/src/**/*
+          dest: .
+        - src: services/common-interfaces/src/**/*
           dest: .
 deploy:
   helm:

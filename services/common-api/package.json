@@ -1,19 +1,16 @@
 {
-  "name": "@deckery/common",
+  "name": "@deckery/common-api",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "exports": {
-    ".": null,
-    "./api": "./dist/api/index.js",
-    "./middlewares": "./dist/middlewares/index.js",
-    "./utils": "./dist/utils/index.js",
-    "./authorities": "./dist/authorities.js",
-    "./types": "./dist/types/index.js"
+    ".": "./dist/index.js",
+    "./decorator": "./dist/decorator/index.js",
+    "./middlewares": "./dist/middlewares/index.js"
   },
   "scripts": {
-    "build": "tsc --noEmit"
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",

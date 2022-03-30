@@ -1,5 +1,5 @@
 import Koa from 'koa';
-import { ApiError } from '../api/api-error';
+import { ApiError } from '../api-error';
 
 export async function CatchError(ctx: Koa.Context, next: Koa.Next) {
   try {

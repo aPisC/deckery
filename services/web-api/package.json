@@ -1,4 +1,7 @@
 {
+  "name": "@deckery/web-api",
+  "private": true,
+  "version": "1.0.0",
   "devDependencies": {
     "typescript": "^4.6.2"
   },

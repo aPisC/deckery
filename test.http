@@ -8,7 +8,7 @@ post http://localhost:33002/auth/register
 content-type: application/json
 
 {
-    "email": "asd1@asd.com",
-    "username": "username1",
+    "email": "asd@asd.com",
+    "username": "username",
     "password": "password"
 }

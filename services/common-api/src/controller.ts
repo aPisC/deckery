@@ -1,9 +1,9 @@
 import Router from 'koa-router';
 import 'reflect-metadata';
 import Koa from 'koa';
-import { RouteDefinition } from './route';
-import { kebabize } from '../utils/kebabize';
-import { ReturnJson } from '../middlewares';
+import { RouteDefinition } from './decorators/route';
+import { kebabize } from '@deckery/common-utils';
+import { ReturnJson } from './middlewares';
 
 export const Symbols = {
   routerOptions: Symbol(),

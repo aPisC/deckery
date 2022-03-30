@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "target": "ES2015",
+    "module": "CommonJS",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "rootDir": "./src"
+  },
+  "references": [{ "path": "../common-utils" }],
+  "include": ["**/*"]
+}
