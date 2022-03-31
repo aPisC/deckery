@@ -1,4 +1,4 @@
-import KoaCors from 'koa-cors';
+import KoaCors from '@koa/cors';
 import Koa, { Context, DefaultState, Request, Response } from 'koa';
 import KoaBodyparser from 'koa-bodyparser';
 import KoaCompress from 'koa-compress';

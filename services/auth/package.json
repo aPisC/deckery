@@ -26,6 +26,7 @@
     "exec": "node -r ts-node/register --inspect  ./src/index.ts"
   },
   "dependencies": {
+    "@koa/cors": "^3.3.0",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/koa": "^2.13.4",
     "@types/koa-bodyparser": "^4.3.7",
@@ -33,6 +34,7 @@
     "@types/koa-cors": "^0.0.2",
     "@types/koa-logger": "^3.1.2",
     "@types/koa-router": "^7.4.4",
+    "@types/koa__cors": "^3.1.1",
     "@types/node": "^17.0.23",
     "@types/sequelize": "^4.28.11",
     "@types/validator": "^13.7.2",
@@ -40,7 +42,6 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-compress": "^5.1.0",
-    "koa-cors": "^0.0.16",
     "koa-helmet": "^6.1.0",
     "koa-jwt": "^4.0.3",
     "koa-logger": "^3.2.1",

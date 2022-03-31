@@ -1,13 +1,12 @@
 import { createServer } from 'http';
-import UserGroupModel from './models/group.model';
-import AuthorityModel from './models/authority.model';
-import UserModel from './models/user.model';
 import { bootstrap as sequelizeBootstrap } from './persistance';
 import { bootstrap as koaBootstrap } from './server';
 
 async function bootstrap() {
+  const koaServer = await koaBootstrap();
+
   await sequelizeBootstrap({
-    logging: console.log,
+    logging: false,
     database: 'some_db',
     dialect: 'sqlite',
     username: 'root',
@@ -15,8 +14,6 @@ async function bootstrap() {
     storage: ':memory:',
     models: [__dirname + '/models'],
   });
-
-  const koaServer = await koaBootstrap();
 
   const httpServer = createServer(koaServer.callback());
 
