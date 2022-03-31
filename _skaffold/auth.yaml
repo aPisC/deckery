@@ -5,27 +5,32 @@ metadata:
 
 build:
   artifacts:
-    - image: localhost:30500/deckery/auth
+    - image: auth-development
+      context: ..
+      docker:
+        dockerfile: services/auth/Dockerfile.dev
+      sync:
+        infer: 
+        - services/tsconfig.base.json
+        - services/auth/**/*
+        - services/common-api/**/*
+        - services/common-utils/**/*
+        - services/common-interfaces/**/*
+    - image: auth
       context: ..
       docker:
         dockerfile: services/auth/Dockerfile
-      sync:
-        manual:
-        - src: services/auth/src/**/*
-          dest: .
-        - src: services/common-api/src/**/*
-          dest: .
-        - src: services/common-utils/src/**/*
-          dest: .
-        - src: services/common-interfaces/src/**/*
-          dest: .
+      requires: 
+      - image: auth-development
+        alias: DEVIMG
+
 deploy:
   helm:
     releases: 
     - name: deckery-auth
       chartPath: ../_helm/charts/auth
       artifactOverrides:
-        auth: localhost:30500/deckery/auth
+        auth: auth
       imageStrategy:
         helm: {}
 profiles: 
@@ -33,6 +38,8 @@ profiles:
   activation:
   - command: dev
   patches:
-    - op: add
-      path: /build/artifacts/0/docker/target
-      value: development
+    - op: remove
+      path: /build/artifacts/1
+    - op: replace
+      path: /deploy/helm/releases/0/artifactOverrides/auth
+      value: auth-development

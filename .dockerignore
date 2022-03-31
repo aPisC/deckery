@@ -1,5 +1,7 @@
-build 
-dist
+.gitignore
 node_modules
-Dockerfile
-tsconfig.tsbuildinfo
+services/*/node_modules/**
+services/*/dist/**
+services/*/build/**
+services/*/Dockerfile
+services/*/tsconfig.tsbuildinfo

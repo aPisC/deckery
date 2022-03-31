@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "start": "node dist/index.js",
     "test": "NODE_ENV=test jest'",
-    "dev": "concurrently \"npm:dev:ts\" \"npm:dev:js\"",
+    "dev": "nodemon",
     "dev:ts": "tsc -b -w",
     "dev:js": "nodemon",
     "build": "tsc --build"
