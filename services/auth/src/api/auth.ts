@@ -11,9 +11,25 @@ import GroupModel from '../models/group.model';
 import { config } from '../config';
 
 export default class AuthController extends Controller {
-  @Route.Get('/')
-  async index() {
-    return 'okkkk';
+  @Route.Post('/login')
+  @ValidateBody<AuthTypes.Login>(
+    Joi.object({
+      identifier: Joi.string().required(),
+      password: Joi.string().required(),
+    }).required()
+  )
+  async login(ctx: ServerContext<AuthTypes.Login>, next: Koa.Next) {
+    const { identifier, password } = <AuthTypes.Login>ctx.request.body;
+
+    const user = await UserModel.findOne({
+      where: {
+        [Op.or]: [{ username: identifier }, { email: identifier }],
+      },
+    });
+
+    if (!user || !user.validatePassword(password)) ctx.throw(403, 'Identifier or password is incorrect!');
+
+    return this.createTokenData(user);
   }
 
   @Route.Post()

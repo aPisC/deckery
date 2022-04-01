@@ -12,3 +12,13 @@ content-type: application/json
     "username": "username",
     "password": "password"
 }
+
+###
+
+post http://localhost:33002/auth/login
+content-type: application/json
+
+{
+    "identifier": "admin",
+    "password": "wlR5lHdn2Z2h"
+}
