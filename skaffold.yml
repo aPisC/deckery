@@ -21,3 +21,7 @@ portForward:
     resourceName: deckery-auth
     port: 80
     localPort: 33002
+  - resourceType: Service
+    resourceName: deckery-auth
+    port: 9229
+    localPort: 9229

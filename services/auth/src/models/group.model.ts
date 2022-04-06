@@ -12,5 +12,18 @@ export default class GroupModel extends Model<GroupAttributes, GroupCreateAttrib
   declare isDefault: boolean;
 
   @HasMany(() => AuthorityModel)
-  declare authorities: any[];
+  declare authorities: AuthorityModel[];
+
+  public static async getDefaultGroup(): Promise<GroupModel> {
+    const [group] = await GroupModel.findOrCreate({
+      where: {
+        isDefault: true,
+      },
+      defaults: {
+        name: 'default',
+        isDefault: true,
+      },
+    });
+    return group;
+  }
 }

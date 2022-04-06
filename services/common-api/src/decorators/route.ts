@@ -1,22 +1,26 @@
 import 'reflect-metadata';
 import { Symbols } from '../controller';
+import { Map } from './mappers';
+import { Validate } from './validate';
 
-type HttpMethod = 'get' | 'post' | 'put' | 'del' | 'all';
+export const Route = {
+  Get: (path?: string, options: RouteOptions = defaultOptions) => RouteDecorator('get', path, options),
+  Post: (path?: string, options: RouteOptions = defaultOptions) => RouteDecorator('post', path, options),
+  Put: (path?: string, options: RouteOptions = defaultOptions) => RouteDecorator('put', path, options),
+  Delete: (path?: string, options: RouteOptions = defaultOptions) => RouteDecorator('del', path, options),
+  All: (path?: string, options: RouteOptions = defaultOptions) => RouteDecorator('all', path, options),
+};
 
-export interface RouteDefinition {
-  method: HttpMethod;
-  handler: string | Symbol;
-  path: string;
-}
+function RouteDecorator(method: HttpMethod, path?: string, options: RouteOptions = defaultOptions): MethodDecorator {
+  return function <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): void {
+    // Apply validation and mapper decorators
+    if (options.enableValidator) Validate.Apply()(target, propertyKey, descriptor);
+    if (options.enableMapper) Map.Apply()(target, propertyKey, descriptor);
 
-function RouteDecorator(method: HttpMethod, path?: string): MethodDecorator {
-  return function <T>(target: Object, propertyKey: string | Symbol, descriptor: TypedPropertyDescriptor<T>): void {
     // Route definition
-    if (!path) path = `/${propertyKey}`;
-    if (!Reflect.hasMetadata(Symbols.routes, target.constructor))
-      Reflect.defineMetadata(Symbols.routes, [], target.constructor);
-
-    const routes: RouteDefinition[] = Reflect.getMetadata(Symbols.routes, target.constructor);
+    if (!path) path = `/${String(propertyKey)}`;
+    const routes: RouteDefinition[] = Reflect.getMetadata(Symbols.routes, target)?.slice() || [];
+    Reflect.defineMetadata(Symbols.routes, routes, target);
 
     routes.push({
       path,
@@ -26,10 +30,20 @@ function RouteDecorator(method: HttpMethod, path?: string): MethodDecorator {
   };
 }
 
-export const Route = {
-  Get: (path?: string) => RouteDecorator('get', path),
-  Post: (path?: string) => RouteDecorator('post', path),
-  Put: (path?: string) => RouteDecorator('put', path),
-  Delete: (path?: string) => RouteDecorator('del', path),
-  All: (path?: string) => RouteDecorator('all', path),
+type HttpMethod = 'get' | 'post' | 'put' | 'del' | 'all';
+
+export interface RouteDefinition {
+  method: HttpMethod;
+  handler: string | symbol;
+  path: string;
+}
+
+export interface RouteOptions {
+  enableMapper?: boolean;
+  enableValidator?: boolean;
+}
+
+const defaultOptions: RouteOptions = {
+  enableMapper: true,
+  enableValidator: true,
 };

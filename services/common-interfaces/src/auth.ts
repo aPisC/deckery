@@ -19,4 +19,9 @@ export namespace AuthTypes {
     authorities: string[];
     groupId: number;
   }
+
+  export interface AuthData {
+    jwt: string;
+    user: User;
+  }
 }

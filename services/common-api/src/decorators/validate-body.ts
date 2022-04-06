@@ -1,18 +1,21 @@
 import Joi from 'joi';
-import { ControllerMiddleware, EndpointMiddleware, Middleware } from './middleware';
+import { EndpointMiddlewareDecorator } from '../types';
+import { ControllerMiddleware, Middleware } from './middleware';
 
 // Validating object schema
-export function ValidateBody<TEntity extends {}>(
-  schema: Joi.ObjectSchema<TEntity> | (() => Joi.ObjectSchema<TEntity>)
-): EndpointMiddleware;
-export function ValidateBody<TEntity extends {}>(
-  schema: Joi.ObjectSchema<TEntity> | (() => Joi.ObjectSchema<TEntity>)
-): ControllerMiddleware;
-
-// Validating other types
-export function ValidateBody(schema: Joi.AnySchema | (() => Joi.AnySchema)): EndpointMiddleware;
-export function ValidateBody(schema: Joi.AnySchema | (() => Joi.AnySchema)): ControllerMiddleware;
-// Implementation
+export function ValidateBody<TRequest extends {}>(
+  schema: Joi.ObjectSchema<TRequest> | (() => Joi.ObjectSchema<TRequest>)
+): EndpointMiddlewareDecorator;
+// export function ValidateBody<TEntity extends {}>(
+//   schema: Joi.ObjectSchema<TEntity> | (() => Joi.ObjectSchema<TEntity>)
+// ): ControllerMiddleware;
+//
+// // Validating other types
+// export function ValidateBody<TEntity>(
+//   schema: Joi.AnySchema | (() => Joi.AnySchema)
+// ): EndpointMiddlewareDecorator<TEntity, any>;
+// export function ValidateBody(schema: Joi.AnySchema | (() => Joi.AnySchema)): ControllerMiddleware;
+// // Implementation
 
 export function ValidateBody(schema: Joi.AnySchema | (() => Joi.AnySchema)): any {
   return Middleware(function (ctx, next) {

@@ -11,11 +11,7 @@ build:
         dockerfile: services/auth/Dockerfile.dev
       sync:
         infer: 
-        - services/tsconfig.base.json
         - services/auth/**/*
-        - services/common-api/**/*
-        - services/common-utils/**/*
-        - services/common-interfaces/**/*
     - image: auth
       context: ..
       docker:

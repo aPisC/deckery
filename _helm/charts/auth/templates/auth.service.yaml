@@ -13,3 +13,7 @@ spec:
     targetPort: {{ .Values.auth.service.internalPort }}
     protocol: TCP
     name: {{ .Chart.Name }}
+  - port: 9229
+    targetPort: 9229
+    protocol: TCP
+    name: {{ .Chart.Name }}-debug
