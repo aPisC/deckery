@@ -48,5 +48,6 @@ export namespace Map {
   export const Response = () => Mapper((ctx) => ctx.response);
   export const Body = () => Mapper((ctx) => ctx.request.body);
   export const State = () => Mapper((ctx) => ctx.state);
+  export const User = () => Mapper((ctx) => ctx.state?.user);
   export const Query = () => Mapper((ctx) => ctx.request.query);
 }

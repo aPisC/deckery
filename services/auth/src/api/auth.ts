@@ -40,6 +40,14 @@ export default class AuthController extends Controller {
 
     return createTokenData(await user.toAuthUser());
   }
+
+  @Route.Post('/renew')
+  async renew(@Map.User() { id }: AuthTypes.User): Promise<AuthTypes.AuthData> {
+    const user = await UserModel.findOne({ where: { id: id } });
+    if (!user) throw new ApiError.Internal('User not found');
+
+    return createTokenData(await user.toAuthUser());
+  }
 }
 
 function createTokenData(user: AuthTypes.User): AuthTypes.AuthData {
